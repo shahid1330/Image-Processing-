@@ -1,15 +1,15 @@
 # Image-Processing-
 **negative**
 
---*img=imread('cameraman.tif');
---*[m,n]=size(img);
---*negative=zeros(m,n);
---*for i= 1 : m
-    --*for j= 1: n
-        --*img(i,j)=255-img(i,j);
-    --*end
---*end
---*imshow(img);
+<br>img=imread('cameraman.tif');
+<br>[m,n]=size(img);
+negative=zeros(m,n);
+for i= 1 : m
+    for j= 1: n
+        img(i,j)=255-img(i,j);
+    end
+end
+imshow(img);
 
 **log transformation**
 
