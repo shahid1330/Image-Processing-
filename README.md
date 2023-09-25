@@ -5,7 +5,7 @@
 <br>[m,n]=size(img);
 <br>negative=zeros(m,n);
 <br>for i= 1 : m
-    <br>for j= 1: n
+    <br>&nbspfor j= 1: n
         <br>img(i,j)=255-img(i,j);
     <br>end
 <br>end
