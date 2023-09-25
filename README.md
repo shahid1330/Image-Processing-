@@ -1,5 +1,6 @@
 # Image-Processing-
 **negative**
+
 img=imread('cameraman.tif');
 [m,n]=size(img);
 negative=zeros(m,n);
@@ -11,6 +12,7 @@ end
 imshow(img);
 
 **log transformation**
+
 img=imread('cameraman.tif');
 [m,n]=size(img);
 c=29;
@@ -22,6 +24,7 @@ end
 imshow(img);
 
 **gamma 2 variable transformation**
+
 img=imread('cameraman.tif');
 [m,n]=size(img);
 c=2;
@@ -34,6 +37,7 @@ end
 imshow(img);
 
 **intensity level slicing**
+
 img=imread('moon.tif');
 [m,n]=size(img);
 for i = 1 : m
