@@ -1,0 +1,200 @@
+%sampling
+
+a=imread("tire.tif");
+
+[m,n]=size(a);
+b=a(2:2:m , 2:2:n)
+
+[m,n]=size(b);
+c=b(2:2:m , 2:2:n)
+
+[m,n]=size(c);
+d=c(2:2:m , 2:2:n)
+
+[m,n]=size(d);
+e=d(2:2:m , 2:2:n)
+
+[m,n]=size(e);
+f=e(2:2:m , 2:2:n)
+
+[m,n]=size(f);
+g=f(2:2:m , 2:2:n)
+
+[m,n]=size(g);
+h=g(2:2:m , 2:2:n)
+
+[m,n]=size(h);
+i=h(2:2:m , 2:2:n)
+
+
+subplot(2,4,1),imshow(a)
+subplot(2,4,2),imshow(b)
+subplot(2,4,3),imshow(c)
+subplot(2,4,4),imshow(d)
+subplot(2,4,5),imshow(e)
+subplot(2,4,6),imshow(f)
+subplot(2,4,7),imshow(g)
+subplot(2,4,8),imshow(h)
+
+
+%quantization
+
+img=imread("tire.tif")
+img=rgb2gray(img)
+[m,n]=size(img);
+a=zeros(m,n)
+b=zeros(m,n)
+c=zeros(m,n)
+d=zeros(m,n)
+e=zeros(m,n)
+f=zeros(m,n)
+g=zeros(m,n)
+h=zeros(m,n)
+for i=1:m
+    for j=1:n
+    a(i,j)=2*img(i,j)/2;
+    b(i,j)=4*img(i,j)/4;
+    c(i,j)=8*img(i,j)/8;
+    d(i,j)=16*img(i,j)/16;
+    e(i,j)=32*img(i,j)/32;
+    f(i,j)=64*img(i,j)/64;
+    g(i,j)=128*img(i,j)/128;
+    h(i,j)=256*img(i,j)/256;
+
+    end
+end
+
+
+subplot(2,4,1),imshow(a,[])
+subplot(2,4,2),imshow(b,[])
+subplot(2,4,3),imshow(c,[])
+subplot(2,4,4),imshow(d,[])
+subplot(2,4,5),imshow(e,[])
+subplot(2,4,6),imshow(f,[])
+subplot(2,4,7),imshow(g,[])
+subplot(2,4,8),imshow(h,[])
+
+
+
+%log
+
+c=29
+img=i
+[m,n]=size(img)
+for i=1:m
+    for j=1:n
+        img(i,j)=c*log(255+double(img(i,j)));
+    end
+end
+imshow(img)
+
+
+
+%negative
+
+img=imread('tan.jpg')
+[m,n]=size(img)
+for i=1:m
+    for j=1:n
+        img(i,j)=255-img(i,j);
+    end
+end
+imshow(img)
+
+
+
+
+%gama
+
+c=4
+g=1
+img=i
+[m,n]=size(img)
+for i=1:m
+    for j=1:n
+        img(i,j)=c*(double(img(i,j))^g);
+    end
+end
+imshow(img)
+
+
+
+%intensity
+
+img=i
+[m,n]=size(img)
+subplot(1,2,1),imshow(img),title("original f(x,y)");
+
+for i=1:m
+    for j=1:n
+        if (img(i,j)<=50)
+            img(i,j)=255;
+        end
+    end
+end    
+subplot(1,2,2),imshow(img),title("90 intensity scaled f(x,y)");
+
+
+
+
+%histo
+
+i=imread('spine.tif')
+subplot(2,2,1),imshow(i)
+subplot(2,2,2),imhist(i)
+
+i=histeq(i,200);
+subplot(2,2,3),imshow(i)
+subplot(2,2,4),imhist(i)
+
+
+
+% Noise , Avg Filt , Median Filt
+
+img=rgb2gray(i);
+subplot(2,2,1),imshow(img),title("original");
+
+a=imnoise(img,'gaussian',0.1)
+subplot(2,2,2),imshow(a),title("noised");
+
+filterSize = [50,50];
+avg_f= fspecial('average', filterSize);
+avg_f = imfilter(img, avg_f);
+subplot(2,2,3),imshow(avg_f),title("average");
+
+avg_f=medfilt2(a);
+subplot(2,2,3),imshow(avg_f),title("median");
+
+
+
+%sharpen
+
+img=imsharpen(avg_f,"Radius",45,"Amount",1)
+subplot(2,2,4),imshow(img),title("sharpened")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
